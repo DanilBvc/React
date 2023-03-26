@@ -18,3 +18,13 @@
 .error-text {
   color: red;
 }
+.form-card-img {
+  max-width: 100px;
+}
+.form-card-wrapper {
+  border: 1px solid black;
+  padding: 10px;
+}
+.forms-items {
+  margin-top: 10px;
+}

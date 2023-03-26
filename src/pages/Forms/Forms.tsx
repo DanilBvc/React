@@ -103,7 +103,6 @@ export class Forms extends Component<unknown, { cards: IFormCard[], errors: [] |
     if (this.coolFroms.current?.checked === undefined) {
       await this.setNewError('coolFroms')
     }
-    console.log(this.state.errors)
   }
   async handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -209,17 +208,17 @@ export class Forms extends Component<unknown, { cards: IFormCard[], errors: [] |
             ? null
             : this.state.cards.map((item) => (
               <div className="form-card-wrapper" key={item.firstName}>
-                <div>{item.firstName}</div>
-                <div>{item.lastName}</div>
-                <div><img src={URL.createObjectURL(item.file)} alt="" /></div>
-                <div>{item.birthday}</div>
-                <div>{item.addres}</div>
-                <div>{item.city}</div>
+                <div>First name: {item.firstName}</div>
+                <div>Last name: {item.lastName}</div>
+                <div><img src={URL.createObjectURL(item.file)} alt="" className='form-card-img' /></div>
+                <div>Your birthday: {item.birthday}</div>
+                <div>Your address: {item.addres}</div>
+                <div>Your city: {item.city}</div>
                 <div>Email notifications: {item.emailNotification ? '✓' : 'x'}</div>
-                <div>Phone notifications:{item.phoneNotification ? '✓' : 'x'}</div>
-                <div>Cool website:{item.coolWebsite ? '✓' : 'x'}</div>
-                <div>Cool forms:{item.coolFroms ? '✓' : 'x'}</div>
-                <div>{item.whoAreYou}</div>
+                <div>Phone notifications: {item.phoneNotification ? '✓' : 'x'}</div>
+                <div>Cool website: {item.coolWebsite ? '✓' : 'x'}</div>
+                <div>Cool forms: {item.coolFroms ? '✓' : 'x'}</div>
+                <div>Who are you: {item.whoAreYou}</div>
               </div>
             ))}
         </div>
