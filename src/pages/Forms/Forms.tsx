@@ -1,12 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React, { Component, RefObject, createRef } from 'react';
-import { IFormCard } from '../../types/types';
+import { ComponentWithSetStateAsync, IFormCard, PartialState } from '../../types/types';
 import './Forms.css'
-type PartialState<State> = Partial<State> | ((prevState: State) => Partial<State>);
 
-interface ComponentWithSetStateAsync<State> extends React.Component {
-  setStateAsync(state: PartialState<State>): Promise<void>;
-}
 export class Forms extends Component<unknown, { cards: IFormCard[], errors: [] | string[] }> {
   firstName: RefObject<HTMLInputElement>;
   lastName: RefObject<HTMLInputElement>;

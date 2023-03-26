@@ -21,3 +21,8 @@ export interface IFormCard {
   coolFroms: boolean;
   whoAreYou: string;
 }
+export type PartialState<State> = Partial<State> | ((prevState: State) => Partial<State>);
+
+export interface ComponentWithSetStateAsync<State> extends React.Component {
+  setStateAsync(state: PartialState<State>): Promise<void>;
+}
