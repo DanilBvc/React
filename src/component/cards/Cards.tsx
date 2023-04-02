@@ -1,21 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { CardProps } from '../../types/types';
 import './card.css';
-export default class Cards extends Component<CardProps> {
-  constructor(props: CardProps) {
-    super(props);
-  }
-  getProps() {
-    return this.props;
-  }
-  render() {
-    return (
-      <div className="card-wrapper">
-        <img src={this.getProps().Poster} alt="" />
-        <div className="title">Title: {this.getProps().Title}</div>
-        <div className="year">Year: {this.getProps().Year}</div>
-        <div className="type">Type: {this.getProps().Type}</div>
-      </div>
-    );
-  }
-}
+const Cards = ({ Title, Year, Poster, Type }: CardProps) => {
+  return (
+    <div className="card-wrapper">
+      <img src={Poster} alt="" />
+      <div className="title">Title: {Title}</div>
+      <div className="year">Year: {Year}</div>
+      <div className="type">Type: {Type}</div>
+    </div>
+  );
+};
+export default Cards;

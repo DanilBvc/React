@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { Main } from '../component/main/Main';
 import { films } from '../constants/films';
+import Main from '../component/main/Main';
 
 describe('Main', () => {
   it('renders input and card-container', () => {

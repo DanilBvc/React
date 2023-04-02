@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import { AboutUs } from '../component/about/AboutUs';
+import AboutUs from '../component/about/AboutUs';
 
 describe('NotFound component', () => {
   test('renders "Not found" text', () => {

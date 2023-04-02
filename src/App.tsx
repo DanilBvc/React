@@ -1,10 +1,10 @@
 import { Component, ReactNode } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import { AboutUs } from './component/about/AboutUs';
-import { NotFound } from './component/notFound/notFound';
-import { Main } from './component/main/Main';
 import './App.css';
 import Forms from './pages/Forms/Forms';
+import Main from './component/main/Main';
+import NotFound from './component/notFound/notFound';
+import AboutUs from './component/about/AboutUs';
 class App extends Component {
   render(): ReactNode {
     return (
