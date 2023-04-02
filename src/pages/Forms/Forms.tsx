@@ -1,5 +1,5 @@
 import './Forms.css';
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 interface userCard {
   firstName: string;
   lastName: string;
@@ -198,7 +198,7 @@ function Forms() {
           <div className="contact-item">
             <input
               type="checkbox"
-              onChange={(e) => {
+              onChange={() => {
                 setUserCard((prev) => {
                   const updatedState = { ...prev };
                   updatedState.emailNotification = !updatedState.emailNotification;
@@ -212,7 +212,7 @@ function Forms() {
           <div className="contact-item">
             <input
               type="checkbox"
-              onChange={(e) => {
+              onChange={() => {
                 setUserCard((prev) => {
                   const updatedState = { ...prev };
                   updatedState.phoneNotification = !updatedState.phoneNotification;
@@ -230,7 +230,7 @@ function Forms() {
               type="checkbox"
               name=""
               id="cool-w"
-              onChange={(e) => {
+              onChange={() => {
                 setUserCard((prev) => {
                   const updatedState = { ...prev };
                   updatedState.coolWebsite = !updatedState.coolWebsite;
@@ -245,7 +245,7 @@ function Forms() {
               type="checkbox"
               name=""
               id="cool-f"
-              onChange={(e) => {
+              onChange={() => {
                 setUserCard((prev) => {
                   const updatedState = { ...prev };
                   updatedState.coolFroms = !updatedState.coolFroms;
@@ -284,7 +284,7 @@ function Forms() {
               name="radio"
               id="zoomer"
               className="radio-input"
-              onChange={(e) => {
+              onChange={() => {
                 setUserCard((prev) => {
                   const updatedState = { ...prev };
                   updatedState.whoAreYou = 'Zoomer';
