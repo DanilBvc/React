@@ -3,6 +3,8 @@ export interface CardProps {
   Year: string;
   Poster: string;
   Type: string;
+  handleOpenModal: (year: string, id: string, type: string) => void;
+  id: string;
 }
 export interface IMain {
   input: string;
