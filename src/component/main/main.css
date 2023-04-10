@@ -1,0 +1,18 @@
+.input {
+  border-radius: 25px;
+  border: 3px solid blue;
+  background: url(https://cdns.iconmonstr.com/wp-content/releases/preview/2018/240/iconmonstr-search-thin.png)
+    no-repeat left center;
+  background-size: 20px;
+  background-position-x: 5px;
+  font-size: 24px;
+  padding: 10px 10px 10px 25px;
+  color: green;
+}
+.card-main {
+  display: flex;
+  flex-direction: column;
+}
+.card-wrapper {
+  border: 1px solid black;
+}
