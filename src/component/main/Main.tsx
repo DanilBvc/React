@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './main.css';
 import Cards from '../cards/Cards';
 import Modal from '../modal/modal';
-type FilmsType = {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
-};
+import { useAppDispatch, useAppSelector } from '../../store/hook';
+import { MovieActions, fetchMovies } from '../../store/reducers/apiReducer';
+
 const Main = () => {
-  const baseUrl = 'https://www.omdbapi.com/?';
-  const [input, setInput] = useState('');
-  const [films, setFilms] = useState<[] | FilmsType[]>([]);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
+  const { loading, searchMovie, movies } = useAppSelector((state) => state.search);
   const [popupData, setPopupData] = useState<null | { year: string; type: string; id: string }>(
     null
   );
@@ -25,27 +19,14 @@ const Main = () => {
     setPopupData(null);
   };
   const handleInput = (value: string) => {
-    setInput(value);
+    dispatch(MovieActions.setSearchValue(value));
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (input.length !== 0) {
-      setLoading(true);
-      const response = await fetch(baseUrl + `s=${input}&page=${1}&apikey=4a3b711b`);
-      const result = await response.json();
-      setFilms(result.Search);
-      setLoading(false);
-    }
+
+    dispatch(fetchMovies(searchMovie));
   };
-  useEffect(() => {
-    localStorage.setItem('input', input);
-  }, [input]);
-  useEffect(() => {
-    const inputFromLocalStorage = localStorage.getItem('input');
-    if (inputFromLocalStorage) {
-      setInput(inputFromLocalStorage);
-    }
-  }, []);
+
   return (
     <form onSubmit={handleSubmit} className="card-main">
       <Modal popupData={popupData} onClose={handleCloseModal} />
@@ -54,17 +35,17 @@ const Main = () => {
           handleInput(e.target.value);
         }}
         className="input"
-        value={input}
+        value={searchMovie}
         type="text"
       />
       {loading ? (
         <div>Loading please wait...</div>
       ) : (
         <div data-testid="card-container" className="card-container">
-          {!films && !loading ? (
+          {!movies && !loading ? (
             <div>Nothing not found...</div>
           ) : (
-            films.map((film) => (
+            movies.map((film) => (
               <Cards
                 key={film.imdbID}
                 Title={film.Title}

@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import './Forms.css';
-import React, { useState } from 'react';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hook';
+import { formBlockActions } from '../../store/reducers/searchReducer';
 interface userCard {
   lastName: string;
   birthday: string;
@@ -16,7 +18,8 @@ interface userCard {
 }
 
 function Forms() {
-  const [cards, setCards] = useState<userCard[] | []>([]);
+  const dispatch = useAppDispatch();
+  const { formBlocks } = useAppSelector((state) => state.form);
   const {
     register,
     handleSubmit,
@@ -25,7 +28,7 @@ function Forms() {
   } = useForm<userCard>();
   const submit = (data: userCard) => {
     const file = Object.values(data.file)[0];
-    setCards([...cards, { ...data, file: file }]);
+    dispatch(formBlockActions.addBlock({ ...data, file: file }));
     reset();
   };
   return (
@@ -181,9 +184,9 @@ function Forms() {
         <button type="submit">Send</button>
       </form>
       <div className="forms-items">
-        {cards.length === 0
+        {formBlocks.length === 0
           ? null
-          : cards.map((item) => (
+          : formBlocks.map((item) => (
               <div className="form-card-wrapper" key={item.lastName}>
                 <div>Name and Surname: {item.lastName}</div>
                 <div>
